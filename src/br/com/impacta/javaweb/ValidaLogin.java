@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.impacta.javaweb.bean.Usuario;
+
 /**
  * Servlet implementation class ValidaLogin
  */
@@ -23,7 +25,14 @@ public class ValidaLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String senha = request.getParameter("senha");
+		String login = request.getParameter("login");
 		
+		Usuario usuario = new Usuario ();
+		
+		usuario.setSenha(senha);
+		usuario.setLogin(login);
+		
+		request.getSession().setAttribute("usuario", usuario);
 		
 		if (senha !=null && senha.equals("impacta123") )  {
 			

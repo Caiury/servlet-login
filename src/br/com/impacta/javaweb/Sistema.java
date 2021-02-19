@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.impacta.javaweb.bean.Usuario;
+
 /**
  * Servlet implementation class Sistema
  */
@@ -19,8 +21,10 @@ public class Sistema extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-       String login = request.getParameter("login"); 
-		StringBuilder sb = new StringBuilder("<H1>Bem vindo "+login+" <H1><p>");
+		
+       Usuario user =  (Usuario) request.getSession().getAttribute("usuario");
+		
+		StringBuilder sb = new StringBuilder("<H1>Bem vindo "+user.getLogin()+" <H1><p>");
 		
 		
 	       sb.append("<H2>Está é a pagina principal do sistema</H2>");
